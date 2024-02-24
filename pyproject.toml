@@ -1,0 +1,88 @@
+[project]
+name = "nlp-env"
+version = "0.1.0"
+description = "Add your description here"
+authors = [
+    { name = "kskkrt", email = "kskkrt0326@gmail.com" }
+]
+dependencies = [
+    "transformers>=4.38.1",
+    "sentencepiece>=0.2.0",
+    "numpy>=1.24.4",
+    "matplotlib>=3.7.5",
+    "pandas>=2.0.3",
+    "polars>=0.20.10",
+    "gensim>=4.3.2",
+    "spacy>=3.7.4",
+    "mecab-python3>=1.0.8",
+    "wandb>=0.16.3",
+    "hydra-core>=1.3.2",
+    "peft>=0.8.2",
+    "scikit-learn>=1.3.2",
+    "scipy>=1.10.1",
+    "accelerate>=0.27.2",
+    "bitsandbytes>=0.42.0",
+    "trl>=0.7.11",
+    "deepspeed>=0.13.3",
+    "tqdm>=4.66.2",
+    "torch>=2.2.1",
+    "datasets>=2.17.1",
+    "fugashi>=1.3.0",
+    "ipadic>=1.0.0",
+    "evaluate>=0.4.1",
+    "sentence-transformers>=2.4.0",
+    "unidic-lite>=1.0.8",
+    "nltk>=3.6.7",
+    "label-studio>=1.11.0",
+]
+readme = "README.md"
+requires-python = ">= 3.8"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.rye]
+managed = true
+dev-dependencies = [
+    "ruff>=0.2.2",
+    "black>=24.2.0",
+    "mypy>=1.8.0",
+    "jupyter>=1.0.0",
+]
+
+[tool.hatch.metadata]
+allow-direct-references = true
+
+[tool.mypy]
+strict = true
+ignore_missing_imports = true
+disallow_untyped_decorators = false
+disallow_untyped_calls = false
+
+[tool.ruff]
+select = [
+    "F", # pyflakes
+    "E", # pycodestyle
+    "W", # pycodestyle warnings
+    "I", # isort
+    "D", # pydocstyle
+]
+ignore = []
+# 1行の最大文字数
+line-length = 88
+
+extend-ignore = [
+    "D105", # undocumented-magic-method
+    "D107", # undocumented-public-init
+    "D205", # blank-line-after-summary
+    "D415" # ends-in-punctuation
+]
+
+[tool.ruff.lint.pydocstyle]
+convention = "google"
+
+[tool.ruff.per-file-ignores]
+# 個別設定
+# __init__.pyは未使用インポートを許容
+"__init__.py" = ["F401"]
